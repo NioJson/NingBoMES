@@ -1,0 +1,126 @@
+﻿<Window x:Class="MissionBossAot.Views.GlobalMessageDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MissionBossAot.Views"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        Title="提示"
+        Width="320"
+        Height="180"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        Topmost="True"
+        mc:Ignorable="d">
+    <Grid Background="Transparent">
+        <Border Background="White"
+            BorderBrush="#E0E0E0"
+            BorderThickness="1"
+            CornerRadius="8"
+            />
+
+        <Border Background="#5a88d3"
+            CornerRadius="8,8,0,0"
+            Height="36"
+            VerticalAlignment="Top" />
+
+        <Border Background="#5a88d3"
+    CornerRadius="8,8,0,0"
+    Height="36"
+    VerticalAlignment="Top" />
+
+        <Grid VerticalAlignment="Top" Height="36">
+            <StackPanel Orientation="Horizontal"
+            Margin="12,0,0,0"
+            VerticalAlignment="Center">
+                <!-- 使用 Path 替代 IconElement -->
+                <Path x:Name="TitleIcon"
+          Width="16"
+          Height="16"
+          Stretch="Uniform" />
+                <TextBlock x:Name="TitleText"
+               Text="提示信息"
+               Foreground="White"
+               Margin="8,0,0,0"
+               FontSize="13"
+               FontWeight="SemiBold" />
+            </StackPanel>
+
+            <Button x:Name="BtnClose"
+        Width="36"
+        Height="36"
+        HorizontalAlignment="Right"
+        Background="Transparent"
+        BorderBrush="Transparent"
+        Cursor="Hand"
+        Foreground="#CCFFFFFF">
+                <!-- 关闭按钮图标 -->
+                <Path Data="M0,0 L10,10 M10,0 L0,10"
+          Stroke="#CCFFFFFF"
+          StrokeThickness="1.5"
+          Width="10"
+          Height="10"
+          Stretch="Uniform" />
+            </Button>
+        </Grid>
+        <StackPanel Margin="30,55,30,25">
+            <!-- 消息内容 -->
+            <ScrollViewer MaxHeight="80"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+                <TextBlock x:Name="TxtMessage"
+                       TextWrapping="Wrap"
+                       FontSize="14"
+                       Foreground="#333333"
+                       TextAlignment="Center"
+                       LineHeight="22" />
+            </ScrollViewer>
+
+            <!-- 自动关闭模式：进度条和倒计时 -->
+            <StackPanel x:Name="AutoClosePanel"
+                    Visibility="Collapsed"
+                    Margin="0,20,0,0">
+                <Border Height="4"
+                    Background="#EEEEEE"
+                    CornerRadius="2">
+                    <Border x:Name="ProgressBar"
+                        Width="0"
+                        Background="#5a88d3"
+                        CornerRadius="2"
+                        HorizontalAlignment="Left" />
+                </Border>
+                <TextBlock x:Name="TxtCountdown"
+                       Text="5 秒后自动关闭"
+                       FontSize="11"
+                       Foreground="#888888"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0" />
+            </StackPanel>
+
+            <!-- 确认关闭模式：按钮 -->
+            <StackPanel x:Name="ConfirmPanel"
+                    Visibility="Collapsed"
+                    Margin="0,20,0,0">
+                <Button x:Name="BtnConfirm"
+                    Width="100"
+                    Height="32"
+                    HorizontalAlignment="Center"
+                    Background="#5a88d3"
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    Cursor="Hand"
+                    FontSize="13"
+                    Content="确 定">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

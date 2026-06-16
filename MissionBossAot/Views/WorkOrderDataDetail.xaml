@@ -1,0 +1,57 @@
+﻿<Window x:Class="MissionBossAot.Views.WorkOrderDataDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MissionBossAot.Views"
+        mc:Ignorable="d"
+        Title="工站数据明细" 
+        WindowStartupLocation="CenterOwner"
+        Height="600" Width="800"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize">
+    <Grid Margin="10">
+        <DataGrid
+            Name="DataGrid_DataBaseData"
+            Background="White"
+            Foreground="Black"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            CanUserSortColumns="False"
+            ColumnHeaderHeight="30"
+            EnableColumnVirtualization="True"
+            EnableRowVirtualization="True"
+            HorizontalScrollBarVisibility="Auto"
+            IsReadOnly="True"
+            RowHeight="30"
+            Style="{StaticResource DataGrid.Small}"
+            VerticalScrollBarVisibility="Auto">
+
+            <!-- 添加行样式，根据字段值改变背景色 -->
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <!-- 默认背景和前景 -->
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+
+                    <Style.Triggers>
+                        <!-- 根据 IsNG 改变背景色 -->
+                        <DataTrigger Binding="{Binding IsNG}" Value="NG">
+                            <Setter Property="Background" Value="Red" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </DataTrigger>
+
+                        <!-- 选中时覆盖背景色（最高优先级） -->
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</Window>
